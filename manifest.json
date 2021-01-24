@@ -1,0 +1,21 @@
+{
+  "name": "cookie-baker",
+  "version": "0.1.0",
+  "author": "workkk",
+  "description": "manage cookie easily and conveniently.",
+  "permissions": [
+    "cookies",
+    "http://*/*",
+    "https://*/*",
+    "declarativeContent",
+    "storage"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "page_action": {
+    "default_popup": "popup.html"
+  },
+  "manifest_version": 2
+}
