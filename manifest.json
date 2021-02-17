@@ -1,6 +1,6 @@
 {
   "name": "cookie-baker",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "workkk",
   "description": "manage cookie easily and conveniently.",
   "permissions": [
@@ -8,14 +8,15 @@
     "http://*/*",
     "https://*/*",
     "declarativeContent",
-    "storage"
+    "storage",
+    "tabs"
   ],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
   },
-  "page_action": {
-    "default_popup": "popup.html"
+  "browser_action": {
+    "default_title": "Cookie Baker"
   },
   "manifest_version": 2
 }
