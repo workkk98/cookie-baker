@@ -1,0 +1,16 @@
+{
+  "name": "cookie-baker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "lerna run serve --stream",
+    "build": "lerna run build --stream"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
