@@ -2,7 +2,8 @@
  * @file 复制以及粘贴
  */
 
-import { getSingleCookie, setCookie, judgeCookie } from 'src/chrome/cookies';
+import { getSingleCookie, setCookie, judgeCookie, getAllCookie } from 'src/chrome/cookies';
+import { copy } from 'iclipboard';
 
 export default async function copyThenPaste (origin: string, target: string, name: string) {
   const cookie = await getSingleCookie({
@@ -19,4 +20,23 @@ export default async function copyThenPaste (origin: string, target: string, nam
     await setCookie(target, name, cookie.value);
     console.log('cookie复制与粘贴已生效')
   }
+}
+
+/**
+ * 复制某个域名下的所有cookie
+ * @param { string } origin
+ */
+export async function copyAllCookies (origin: string) {
+  const cookies = await getAllCookie({
+    url: origin
+  });
+
+  let cookiesJson = '';
+  try {
+    cookiesJson = cookies.reduce((acc, cookie)  => `${acc}${cookie.name}=${cookie.value}; `, '');
+  } catch (err) {
+    console.error(err);
+  }
+
+  return copy(cookiesJson.trim());
 }

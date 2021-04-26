@@ -30,7 +30,7 @@ export function setCookie (url: string, name: string, value: string) {
  * 获取所有的cookie
  * details是个对象
  */
-export function getAllCookie (details?: chrome.cookies.GetAllDetails) {
+export function getAllCookie (details?: chrome.cookies.GetAllDetails): Promise< chrome.cookies.Cookie[] > {
   return new Promise((resolve, reject) => {
     chrome.cookies?.getAll(details || {}, function(cookies) {
       resolve(cookies);

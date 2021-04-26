@@ -3,13 +3,16 @@ import { traceStrategyList } from 'src/modules/trace/api/strategy';
 import { createUrlFromCookie } from 'src/utilty/url';
 
 /**
- * 执行策略
+ * 执行复制策略
  * @param url 源地址，协议域名路径
  */
 async function excuteStrategy (url: string, cookie: chrome.cookies.Cookie) {
   const strategyList = await strategyStorage.get(false);
 
-  for (const form of strategyList) {
+  // 移除copy-all这个策略
+  const copyStrategy = strategyList.filter(item => item.strategy === 'copy');
+
+  for (const form of copyStrategy) {
     const { origin, strategy, target, name } = form;
 
     console.log('策略: ', form);

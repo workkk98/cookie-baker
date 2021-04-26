@@ -1,9 +1,14 @@
-import { Vue, Component } from 'vue-property-decorator';
-import openCreateModal from './create_strategy';
+import { Vue, Component, Ref } from 'vue-property-decorator';
+import StrategyModalCtor from './create_strategy';
 import { StrategyForm, strategyStorage } from './api/index';
-import copyThenPaste from './api/copy-paste';
+import copyThenPaste, { copyAllCookies } from './api/copy-paste';
 
 const columns = [
+  {
+    title: '策略名称',
+    key: 'strategy',
+    dataIndex: 'strategy'
+  },
   {
     title: '名称',
     dataIndex: 'name',
@@ -15,14 +20,9 @@ const columns = [
     key: 'origin',
   },
   {
-    title: '目标url',
+    title: '目标',
     key: 'target',
     dataIndex: 'target'
-  },
-  {
-    title: '策略名称',
-    key: 'strategy',
-    dataIndex: 'strategy'
   },
   {
     title: '操作',
@@ -35,8 +35,14 @@ interface StrategyData extends StrategyForm {
   key: string;
 }
 
-@Component
+@Component({
+  components: {
+    StrategyModalCtor
+  }
+})
 export default class TraceTable extends Vue {
+  @Ref() private strategyModal!: StrategyModalCtor;
+
   private data: StrategyData[] = [];
 
   created () {
@@ -72,6 +78,8 @@ export default class TraceTable extends Vue {
           }
         }>
       </a-table>
+      <strategy-modal-ctor ref="strategyModal"
+                           onCreateStrategySuccess={this.fetchData} />
     </div>
   }
 
@@ -100,15 +108,21 @@ export default class TraceTable extends Vue {
       return <span>
         <a onClick={() => {
           Vue.prototype.$message.success('已执行');
-          copyThenPaste(record.origin, record.target, record.name)
+          record.strategy === 'copy' ?
+            copyThenPaste(record.origin, record.target, record.name) :
+            this.excuteStrategy(record.origin);
         }}>立即执行</a>
       </span>
     }
   }
 
   public openModal () {
-    openCreateModal(() => {
-      this.fetchData();
-    });
+    this.strategyModal.openModal();
+  }
+
+  public async excuteStrategy (origin: string) {
+    await copyAllCookies(origin) ? 
+      this.$message.success('复制成功') :
+      this.$message.error('复制失败');
   }
 }
