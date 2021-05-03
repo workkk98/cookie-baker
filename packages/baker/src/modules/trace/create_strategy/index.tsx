@@ -5,18 +5,18 @@
 import { Vue, Component, Ref } from 'vue-property-decorator';
 import { StrategyForm, strategyStorage } from '../api';
 import copyThenPaste, { copyAllCookies } from '../api/copy-paste';
-import CopyStrategyCtor from './copy';
-import CopyDomainCtor from './copy-domain';
+import CopyStrategyCtor from './copy.vue';
+import CopyDomainCtor from './copy-domain.vue';
 
 interface CreateStrategyForm extends StrategyForm {
   originProtocol: string;
   targetProtocol: string;
 }
 
-interface StrategyFormCtor {
+interface StrategyFormCtor extends Vue {
+  isValid(): Promise<boolean>;
   getFormData(): CreateStrategyForm;
 }
-
 
 // 策略窗口
 @Component({
@@ -26,11 +26,9 @@ interface StrategyFormCtor {
   }
 })
 export default class StrategyModalCtor extends Vue {
+  @Ref() private copyForm!: StrategyFormCtor;
 
-
-  @Ref() private copyForm!: Vue & typeof CopyStrategyCtor;
-
-  @Ref() private copyDomainForm!: CopyDomainCtor;
+  @Ref() private copyDomainForm!: StrategyFormCtor;
 
   private visible = false;
 
@@ -42,7 +40,7 @@ export default class StrategyModalCtor extends Vue {
     this.visible = true;
   }
 
-  private getFormData <T> (ctor: T extends StrategyFormCtor ? StrategyFormCtor : any) {
+  private getFormData (ctor: StrategyFormCtor) {
     const strategy = this.form.strategy;
     const { origin, originProtocol, name, target, targetProtocol }  = ctor.getFormData();
     return {
@@ -62,13 +60,14 @@ export default class StrategyModalCtor extends Vue {
   private async submit () {
     const ctor = this.form.strategy === 'copy' ? this.copyForm : this.copyDomainForm;
 
-    // try {
-    //   // 待补全
-    //   await ctor.isValid();
-    // } catch (err) {
-    //   console.error(err);
-    //   return;
-    // }
+    // 校验
+    try {
+      // 待补全
+      await ctor.isValid();
+    } catch (err) {
+      console.error('表单校验失败');
+      return;
+    }
 
     // 取值
     const form = this.getFormData(ctor);

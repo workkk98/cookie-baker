@@ -1,9 +1,13 @@
 {
   "name": "cookie-baker",
-  "version": "0.2.0",
+  "version": "1.0.2",
   "author": "workkk",
   "description": "manage cookie easily and conveniently.",
-  "icons": { "16": "cookie.png", "48": "cookie.png", "128": "cookie.png" },
+  "icons": {
+    "16": "cookie.png",
+    "48": "cookie.png",
+    "128": "cookie.png"
+  },
   "permissions": [
     "cookies",
     "http://*/*",
@@ -13,7 +17,9 @@
     "tabs"
   ],
   "background": {
-    "scripts": ["background.js"],
+    "scripts": [
+      "background.js"
+    ],
     "persistent": false
   },
   "browser_action": {
