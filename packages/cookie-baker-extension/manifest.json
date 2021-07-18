@@ -1,6 +1,6 @@
 {
   "name": "cookie-baker",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "author": "workkk",
   "description": "manage cookie easily and conveniently.",
   "icons": {
@@ -26,5 +26,6 @@
     "default_icon": "cookie.png",
     "default_title": "Cookie Baker"
   },
+  "devtools_page": "devtools.html",
   "manifest_version": 2
 }

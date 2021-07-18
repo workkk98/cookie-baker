@@ -33,3 +33,7 @@ chrome.cookies?.onChanged?.addListener(function(info: chrome.cookies.CookieChang
   console.log('cookie变动', info.cookie);
   excuteStrategy(createUrlFromCookie(info.cookie), info.cookie);
 });
+
+// chrome.webRequest?.onBeforeRequest.addListener(function () {
+
+// });
