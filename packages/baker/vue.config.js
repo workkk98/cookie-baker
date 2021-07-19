@@ -1,19 +1,5 @@
 const path = require('path');
 module.exports = {
-  pages: {
-    index: {
-      entry: 'src/main.ts',
-      template: 'public/index.html',
-      filename: 'index.html',
-      title: 'baker'
-    },
-    devTool: {
-      entry: 'devtool/main.ts',
-      template: 'public/index.html',
-      filename: 'devtool.html',
-      title: 'baker'
-    }
-  },
   chainWebpack: config => {
     config.module
       .rule('less')

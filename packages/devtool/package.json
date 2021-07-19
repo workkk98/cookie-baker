@@ -1,0 +1,63 @@
+{
+  "name": "devtool",
+  "version": "2.0.0",
+  "private": true,
+  "description": "devtool page",
+  "author": {
+    "name": "workkk",
+    "email": "gentlebob1998@icloud.com"
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "main": "main.ts",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "ant-design-vue": "1.7.3",
+    "chrome-extension-async": "^3.4.1",
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^9.1.2"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-typescript": "^7.0.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "typescript": "~4.1.5",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "_id": "devtool@2.0.0",
+  "bugs": {
+    "url": "https://github.com/workkk98/cookie-baker/issues"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "homepage": "https://github.com/workkk98/cookie-baker#readme",
+  "keywords": [
+    "devtool",
+    "page"
+  ],
+  "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npm.taobao.org/"
+  },
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/workkk98/cookie-baker.git"
+  }
+}
