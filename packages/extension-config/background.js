@@ -22,18 +22,31 @@ function focusOrCreateTab(url) {
 }
 
 chrome.browserAction.onClicked.addListener(function(tab) {
-  var manager_url = chrome.extension.getURL("./dist/index.html");
+  var manager_url = chrome.extension.getURL("./baker/index.html");
   focusOrCreateTab(manager_url);
 });
 
+// 背景页建立连接
 chrome.runtime.onConnect.addListener(function (port) {
-  console.assert(port.name === "devtool2background");
+  console.log(port.name === "devtool2background");
   port.onMessage.addListener(function(msg) {
-    if (msg.joke === "Knock knock")
-      port.postMessage({question: "Who's there?"});
-    else if (msg.answer === "Madame")
-      port.postMessage({question: "Madame who?"});
-    else if (msg.answer === "Madame... Bovary")
-      port.postMessage({question: "I don't get it."});
+    // msg.url = target
+
+    console.log(msg);
+    if (msg.url) {
+      getTargetResource(msg.url);
+    }
   });
 });
+
+// url 等于一个string
+function getTargetResource (url) {
+  return new Promise(function (resolve, reject) {
+    // tabs: tab[]
+    // match - pattern只能是协议 + domain + path 不带端口
+    chrome.tabs.query({ url: 'http://localhost/*' }, function (tabs) {
+      console.log(tabs);
+      resolve(tabs[0]);
+    });
+  });
+}

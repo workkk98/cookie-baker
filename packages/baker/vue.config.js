@@ -10,7 +10,7 @@ module.exports = {
     config.resolve.alias
       .set('src', path.resolve(__dirname, 'src'))
   },
-  outputDir: path.resolve(__dirname, '../cookie-baker-extension/dist'),
+  outputDir: path.resolve(__dirname, '../extension-config/baker'),
   publicPath: process.env.NODE_ENV === 'production'
     ? './' :
     '/'

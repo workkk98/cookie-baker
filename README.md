@@ -21,6 +21,13 @@ lerna create package-name
 lerna exec [...args] -- <command>
 # 例如 lerna exec --scope devtool -- yarn run serve
 
+# Run an npm script in each package that contains that script
+# 直接跑packages中的脚本，不用加命令行工具
+# accept all filter flags
+lerna run <script> -- [..args]
+lerna run --scope package-1 --scope *-2 lint
+
+
 # Install lerna for access to the lerna CLI.
 lerna add module-1 packages/prefix-*
 lerna add module-1 --scope=module-2
