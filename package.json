@@ -1,11 +1,13 @@
 {
-  "name": "cookie-baker",
+  "name": "dmp-devtool",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "serve": "lerna run serve --stream",
-    "build": "lerna run build --stream"
+    "build": "lerna run build --stream",
+    "serve:devtool": "lerna exec --scope devtool -- yarn run serve",
+    "build:devtool": "lerna exec --scope devtool -- yarn run build"
   },
   "keywords": [],
   "author": "",

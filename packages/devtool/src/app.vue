@@ -7,15 +7,44 @@
           <p>content</p>
         </a-card>
       </a-col>
-      <a-col :span="8"></a-col>
+      <a-col :span="8">
+        <button @click="excuteWrapper">excute {{ eventCount }}</button>
+      </a-col>
       <a-col :span="8"></a-col>
     </a-row>
   </div>
 </template>
 
 <script>
+import { execute, eventBus } from './channel/index';
+
 export default {
-  name: 'devtool-panel'
+  name: 'devtool-panel',
+  data () {
+    return {
+      eventCount: 0
+    };
+  },
+  methods: {
+    excuteWrapper () {
+      execute('excute in devtool page');
+    }
+  },
+  mounted () {
+    eventBus.subscribe('reload', (data) => {
+      this.eventCount++;
+      const name = 'tencent',
+            value = 'abc123';
+      
+      chrome.devtools.inspectedWindow.eval(
+        // 表达式
+        `
+          localStorage.setItem("${name}", "${value}");
+          console.log(${data});
+        `
+      );
+    });
+  }
 }
 </script>
 

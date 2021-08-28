@@ -1,11 +1,19 @@
-# cookie-baker
+# dmp-devtool
 
-一款管理cookie的插件。
+内部用的开发插件。
 
 ### 目前的功能
 
 1. cookie管理
 2. cookie追踪
+
+### 开发进度
+
+> 整个流程基本上打通了。
+
+1. 多个页面都有建立port的情况？
+2. event-name的管理，甚至可以引入tapable？
+3. devtool页面的优化
 
 ### 如何开发
 
