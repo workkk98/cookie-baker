@@ -1103,6 +1103,11 @@
   resolved "https://registry.nlark.com/@types/node/download/@types/node-16.3.3.tgz#0c30adff37bbbc7a50eb9b58fae2a504d0d88038"
   integrity sha1-DDCt/ze7vHpQ65tY+uKlBNDYgDg=
 
+"@types/node@^16.7.10":
+  version "16.7.10"
+  resolved "https://registry.nlark.com/@types/node/download/@types/node-16.7.10.tgz?cache=0&sync_timestamp=1630451099155&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-16.7.10.tgz#7aa732cc47341c12a16b7d562f519c2383b6d4fc"
+  integrity sha1-eqcyzEc0HBKha31WL1GcI4O21Pw=
+
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
   resolved "https://registry.nlark.com/@types/normalize-package-data/download/@types/normalize-package-data-2.4.1.tgz#d3357479a0fdfdd5907fe67e17e0a85c906e1301"

@@ -50,4 +50,15 @@ export function execute (message?: string) {
   });
 }
 
+export function appointUrl (url: string) {
+    // 检查是否在联调
+    const urlArry = url.match(regex);
+  
+    // 如果没有这个环境
+    if (!urlArry) {
+      return;
+    }
+    port.postMessage({ url: urlArry[1], msg: '' });
+}
+
 execute();

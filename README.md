@@ -33,7 +33,7 @@ lerna exec [...args] -- <command>
 # 直接跑packages中的脚本，不用加命令行工具
 # accept all filter flags
 lerna run <script> -- [..args]
-lerna run --scope package-1 --scope *-2 lint
+lerna run --scope <package name> --scope *-2 lint
 
 
 # Install lerna for access to the lerna CLI.

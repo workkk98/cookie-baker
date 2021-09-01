@@ -11,10 +11,10 @@
                 :title="item.url"
                 :bordered="false">
           <p>一些具体信息</p>
+          <button @click="excuteWrapper(item.url)">excute {{ eventCount }}</button>
         </a-card>
       </a-col>
       <a-col :span="8">
-        <button @click="excuteWrapper">excute {{ eventCount }}</button>
         <div v-for="item of stack"
              :key="item.time">
           <div>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { execute, eventBus } from './channel/index';
+import { appointUrl, eventBus } from './channel/index';
 import { stack } from './detect/index.ts';
 
 export default {
@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     excuteWrapper () {
-      execute('excute in devtool page');
+      appointUrl('excute in devtool page');
     }
   },
   mounted () {
