@@ -2,7 +2,7 @@
 import { getInspectedWinURL } from './notify';
 
 // TODO：这里可能有问题background需要计数。因为有多页面的问题。
-const port = chrome.runtime.connect({
+const port = chrome.runtime?.connect({
   name: 'devtool2background'
 })
 
@@ -23,7 +23,7 @@ export const eventBus: { reload: reloadCb[], subscribe: (eventName: string, call
 };
 
 // 这里需要定义一个msg的类型
-port.onMessage.addListener(function(msg: any) {
+port?.onMessage?.addListener(function(msg: any) {
   console.log(msg);
   if (msg.event in eventBus) {
     // @ts-ignore
